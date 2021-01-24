@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages 
+    {
+        stage ('SQL Test') 
+        {
+            node('remote_node') 
+            {
+                def sql = Sql.newInstance("jdbc:mysql://localhost/testdb",
+                "root", "Devika1234@", "com.mysql.jdbc.Driver")
+                query = "SELECT * from content"
+                println sql.rows(query)
+                sql.close()
+            }
+        }
+    }   
+}
