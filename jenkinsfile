@@ -9,7 +9,7 @@ pipeline {
             {
                 def sql = Sql.newInstance("jdbc:mysql://localhost/testdb",
                 "root", "Devika1234@", "com.mysql.jdbc.Driver")
-                query = "SELECT * from content"
+                query = "ALTER TABLE content ADD address varchar(50);"
                 println sql.rows(query)
                 sql.close()
             }
